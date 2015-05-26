@@ -1,31 +1,31 @@
 {
-  "AWSEBDockerrunVersion": 2,
-  "volumes": [
-    {
-      "name": "node-app",
-      "host": {
-        "sourcePath": "/var/app/current"
-      }
-    }
-  ],
-  "containerDefinitions": [
-    {
-      "name": "node-app",
-      "image": "node:latest",
-      "essential": true,
-      "memory": 128,
-      "portMappings": [
+    "AWSEBDockerrunVersion": 2,
+    "volumes": [
         {
-          "hostPort": 80,
-          "containerPort": 3000
+            "name": "node-app",
+            "host": {
+                "sourcePath": "/var/app/current"
+            }
         }
-      ],
-      "mountPoints": [
+    ],
+    "containerDefinitions": [
         {
-          "sourceVolume": "node-app",
-          "containerPath": "/var/app"
+            "name": "node-app",
+            "image": "atridge/docker-node",
+            "essential": true,
+            "memory": 128,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 3000
+                }
+            ],
+            "mountPoints": [
+                {
+                    "sourceVolume": "node-app",
+                    "containerPath": "/var/app"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

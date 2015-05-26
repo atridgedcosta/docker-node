@@ -1,10 +1,9 @@
 FROM node:latest
 
-WORKDIR /var/app
-RUN npm install
+ADD ./start.sh /start.sh
+RUN chmod 755 /start.sh
 
 # Expose port
 EXPOSE 3000
 
-# Run App
-CMD ["node", "app.js"]
+CMD ["/bin/bash", "/start.sh"]
